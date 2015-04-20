@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+	<title>Phonebook</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/x-icon" href="res/favicon.ico" />
+	<link rel="icon" type="image/png" href="res/tel.png" />
+	<link rel="stylesheet" type="text/css" href="res/tel.css">
+	
+	<script src="res/jquery-1.10.2.min.js"></script>
+	
+	<!-- Search script -->
+	<script>
+		function setFocus() {
+			document.getElementById("search").focus();
+		}
+	</script>
+	
+	<script>
+			$(window).load(function(){
+				var $rows = $('#table tr');
+						$('#search').keyup(function() {
+				var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    
+				$rows.show().filter(function() {
+				var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+				return !~text.indexOf(val);
+					}).hide();
+				});
+			});
+	</script>
+</head>
+
+<body onload="setFocus()">
+
+<div align="center">
+
+<span class="title">Phonebook</span>
+
+<input type="text" id="search" placeholder="search for..">
+
+<p class="vorwahl">..some subtext..</p>
+
+<table>
+	<tr><td><b>Person</b></td><td><b>Code</b></td><td><b>Telefon</b></td><td><b>Building</b></td><td><b>Room</b></td></tr>
+</table>
+	
+<table id="table">
+	<tr><td>Gandalf the White</td><td> Olórin </td><td> 1234 </td><td> LOTR</td><td> 1234 </td></tr>
+	<tr><td>Frodo Baggins</td><td> Naughty Little Fly </td><td> 5678</td><td> LOTR</td><td> 5678 </td></tr>
+	<tr><td>Aragorn II Elessar</td><td> Estel </td><td> 91011</td><td> LOTR</td><td> 91011 </td></tr>
+	<tr><td>Robert Plant</td><td> RP</td><td> 0010 </td><td> LEDZEP</td><td> 0010 </td></tr>
+	<tr><td>Jimmy Page</td><td> JP</td><td> 0100</td><td> LEDZEP</td><td> 0100</td></tr>
+</table>
+
+</div>
+
+</body>
+</html>
